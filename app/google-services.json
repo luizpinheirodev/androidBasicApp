@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "986512658675",
+    "firebase_url": "https://basicappandroid-e2308.firebaseio.com",
+    "project_id": "basicappandroid-e2308",
+    "storage_bucket": "basicappandroid-e2308.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986512658675:android:b29f07974e246658e92786",
+        "android_client_info": {
+          "package_name": "com.uniritter.basicappandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986512658675-5vhsj0aku83k7nea3fi5oofbortffk27.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uniritter.basicappandroid",
+            "certificate_hash": "a7c556b94670238a09de3e8a7b72ebb97deb65df"
+          }
+        },
+        {
+          "client_id": "986512658675-9lvkemcjunkmhlcl7d3dflg3rme79m12.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcFel0YcENpEO6bz5N4EYDTrgfE73lCzw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986512658675-9lvkemcjunkmhlcl7d3dflg3rme79m12.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
