@@ -45,10 +45,8 @@ public class LocalizationActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //  ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                //createLocationRequest();
+
                 askPermission();
-                //askForLocationChange();
                 serviceConfig();
             }
         });
@@ -62,15 +60,8 @@ public class LocalizationActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
-    private void createLocationRequest() {
-        mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(300000);
-        mLocationRequest.setFastestInterval(300000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-    }
 
 
     private void askPermission() {
@@ -102,49 +93,17 @@ public class LocalizationActivity extends AppCompatActivity {
                 }
             };
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 600, 0, locationListener);
+            //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 300000, 0, locationListener);
         } catch (SecurityException ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
-    /*private void askForLocationChange() {
-        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(mLocationRequest);
-        SettingsClient client = LocationServices.getSettingsClient(this);
-        Task<LocationSettingsResponse> task = client.checkLocationSettings(builder.build());
-
-        task.addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
-            @Override
-            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                Toast.makeText(LocalizationActivity.this, "Location is already on", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        task.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                if (e instanceof ResolvableApiException) {
-                    try {
-                        ResolvableApiException resolvable = (ResolvableApiException) e;
-                        resolvable.startResolutionForResult(LocalizationActivity.this, REQUEST_CHECK_SETTINGS);
-                    } catch (IntentSender.SendIntentException ignored) {
-                    }
-                }
-            }
-        });
-    }*/
-
     public void atualizar(Location location) {
 
-        /*try {
-            Thread.sleep(60000L);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        String email = currentUser.getEmail();
 
         Localization l = new Localization();
         l.setUser(mAuth.getCurrentUser().getEmail());

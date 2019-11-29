@@ -65,12 +65,11 @@ public class MainActivity extends AppCompatActivity {
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        for (String provider : locationManager.getAllProviders()) {
+        /*for (String provider : locationManager.getAllProviders()) {
             Toast.makeText(getApplicationContext(), provider, Toast.LENGTH_LONG).show();
-        }
+        }*/
 
         signOut();
-
 
         loginUser = findViewById(R.id.login);
         logoutUser = findViewById(R.id.logout);
@@ -113,9 +112,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        //  updateUI(currentUser);
     }
 
     private void updateUI(FirebaseUser user) {
@@ -170,7 +166,5 @@ public class MainActivity extends AppCompatActivity {
         updateUI(null);
     }
 
-
-    /////////////////
 }
 

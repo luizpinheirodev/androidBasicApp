@@ -26,9 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowLocalizationActivity extends AppCompatActivity {
-    private DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("localization").child("luizemailcom");
-
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    private DatabaseReference myRef;
+
 
     private LocationRequest mLocationRequest;
 
@@ -39,6 +40,12 @@ public class ShowLocalizationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rel);
+
+        String email = mAuth.getCurrentUser().getEmail();
+        String child = email.replaceAll("[\\@\\.\\-\\:\\*]", "");
+
+        myRef = FirebaseDatabase.getInstance().getReference("localization").child(child);
+
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
