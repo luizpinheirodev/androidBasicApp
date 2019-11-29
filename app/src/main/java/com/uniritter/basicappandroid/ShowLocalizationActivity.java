@@ -1,22 +1,19 @@
 package com.uniritter.basicappandroid;
 
 import android.content.Context;
-import android.location.Location;
+import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.location.LocationRequest;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,9 +22,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.uniritter.basicappandroid.entity.Localization;
 
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,9 +42,7 @@ public class ShowLocalizationActivity extends AppCompatActivity {
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        for (String provider : locationManager.getAllProviders()) {
-            Toast.makeText(getApplicationContext(), provider, Toast.LENGTH_LONG).show();
-        }
+        Button logout = findViewById(R.id.logoutShow);
 
         localizationText = findViewById(R.id.localization);
 
@@ -75,11 +67,20 @@ public class ShowLocalizationActivity extends AppCompatActivity {
             }
 
         });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signOut();
+            }
+        });
+
+
     }
 
     private void printLocalization(List<Localization> localizations) {
         String text = "";
-        for (Localization l : localizations){
+        for (Localization l : localizations) {
             text += "Data: " + l.getDate() + " - Latitude: " + l.getLatitude() + " - Longitude: " + l.getLongitude() + " - Usuário: " + l.getUser() + "\n\n";
         }
         localizationText.setText(text);
@@ -89,7 +90,13 @@ public class ShowLocalizationActivity extends AppCompatActivity {
         localizationText.setText("Usuário não encontrado");
     }
 
+    private void signOut() {
+        Log.d("SignOut", "Deslogando");
+        mAuth.signOut();
 
+        Intent it = new Intent(ShowLocalizationActivity.this, MainActivity.class);
+        startActivity(it);
+    }
 
 
 }

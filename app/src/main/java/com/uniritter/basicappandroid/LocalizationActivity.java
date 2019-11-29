@@ -39,9 +39,6 @@ public class LocalizationActivity extends AppCompatActivity {
 
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
-        for (String provider : locationManager.getAllProviders()) {
-            Toast.makeText(getApplicationContext(), provider, Toast.LENGTH_LONG).show();
-        }
 
         Button fab = findViewById(R.id.gps);
         Button rel = findViewById(R.id.rel);

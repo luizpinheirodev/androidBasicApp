@@ -74,20 +74,29 @@ public class MainActivity extends AppCompatActivity {
 
         loginUser = findViewById(R.id.login);
         logoutUser = findViewById(R.id.logout);
+
+
         loginUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 user = findViewById(R.id.user);
                 password = findViewById(R.id.password);
 
-                signIn(user.getText().toString(), password.getText().toString());
+                if (!(user.getText().toString() .equals("") || password.getText().toString() .equals("") )) {
 
-                if (mAuth.getCurrentUser() != null) {
-                    Log.i("CreateUser", "Usuario logado!");
-                    Intent it = new Intent(MainActivity.this, LocalizationActivity.class);
-                    startActivity(it);
-                } else {
-                    Log.i("CreateUser", "Usuario nao logado!");
+
+                    signIn(user.getText().toString(), password.getText().toString());
+
+                    if (mAuth.getCurrentUser() != null) {
+                        Log.i("CreateUser", "Usuario logado!");
+                        Intent it = new Intent(MainActivity.this, LocalizationActivity.class);
+                        startActivity(it);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Senha inválida ou usúario não cadastrado", Toast.LENGTH_LONG).show();
+                        Log.i("CreateUser", "Usuario nao logado!");
+                    }
+                }else{
+                    Toast.makeText(getApplicationContext(), "Senha ou usúario inválida", Toast.LENGTH_LONG).show();
                 }
             }
         });

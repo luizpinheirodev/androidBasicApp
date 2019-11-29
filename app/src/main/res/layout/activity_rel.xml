@@ -13,8 +13,8 @@
             android:id="@+id/localization"
             android:layout_width="330dp"
             android:layout_height="395dp"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="91dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -25,7 +25,20 @@
             android:layout_marginStart="34dp"
             android:layout_marginTop="43dp"
             android:text="Localizações"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/logoutShow"
+            android:layout_width="333dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="17dp"
+            android:text="Sair"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/localization" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
